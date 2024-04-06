@@ -21,6 +21,9 @@ public class Skeleton : MonoBehaviour
     private Animator _mAnimator;
     private UnityEngine.AI.NavMeshAgent _agent;
     // Mode fields
+    private AudioSource _audioSource; // Reference to the AudioSource component
+    public AudioClip deathSound;
+    
     public AttackMode currentAttackMode = AttackMode.Attack01;
     public MoveMode currentMoveMode = MoveMode.Walk01;
 
@@ -159,6 +162,12 @@ public class Skeleton : MonoBehaviour
             DisableMoveAnimation();
             DisableAttackAnimation();
         }
+        
+        if (_audioSource != null && deathSound != null)
+        {
+            _audioSource.PlayOneShot(deathSound);
+        }
+
 
         StartCoroutine(DestroyAfterAnimation());
     }
@@ -191,7 +200,7 @@ public class Skeleton : MonoBehaviour
         _agent = GetComponent<UnityEngine.AI.NavMeshAgent>(); // Initialize the NavMeshAgent
         target = GameObject.FindGameObjectWithTag("Target").transform;
         _agent.speed = walkSpeed; // Set the agent's walking speed
-
+        _audioSource = GetComponent<AudioSource>(); // Initialize the AudioSource
     }
 
     // Update is called once per frame
