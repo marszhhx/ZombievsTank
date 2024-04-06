@@ -19,6 +19,7 @@ public enum MoveMode
 public class Skeleton : MonoBehaviour
 {
     private Animator _mAnimator;
+    private UnityEngine.AI.NavMeshAgent _agent;
     // Mode fields
     public AttackMode currentAttackMode = AttackMode.Attack01;
     public MoveMode currentMoveMode = MoveMode.Walk01;
@@ -40,6 +41,7 @@ public class Skeleton : MonoBehaviour
         // if not alive or if attacking, do not execute below
         if (!alive || isAttacking)
         {
+            _agent.isStopped = true; // Stop the agent from moving
             return;
         }
 
@@ -67,6 +69,8 @@ public class Skeleton : MonoBehaviour
                 Quaternion.RotateTowards(transform.rotation, toRotation, walkSpeed * Time.deltaTime * 100);
         }
         
+        _agent.isStopped = false;
+        _agent.SetDestination(target.position); // Set the destination of the agent to the target's position
         EnableMoveAnimation();
     }
 
@@ -184,7 +188,10 @@ public class Skeleton : MonoBehaviour
     void Start()
     {
         _mAnimator = GetComponentInChildren<Animator>();
+        _agent = GetComponent<UnityEngine.AI.NavMeshAgent>(); // Initialize the NavMeshAgent
         target = GameObject.FindGameObjectWithTag("Target").transform;
+        _agent.speed = walkSpeed; // Set the agent's walking speed
+
     }
 
     // Update is called once per frame
