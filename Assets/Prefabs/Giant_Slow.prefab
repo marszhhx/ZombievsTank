@@ -1320,6 +1320,7 @@ GameObject:
   - component: {fileID: 4575593648611138490}
   - component: {fileID: 3813246790797293466}
   - component: {fileID: 8597681517822611794}
+  - component: {fileID: 3726972211672007719}
   m_Layer: 0
   m_Name: Giant_Slow
   m_TagString: Untagged
@@ -1336,8 +1337,8 @@ Transform:
   m_GameObject: {fileID: 5293538150499056078}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.6, y: 1.3, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 9.484494, y: 3.9299984, z: 6.371132}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7600475165043690264}
@@ -1386,7 +1387,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1394,6 +1395,24 @@ CapsuleCollider:
   m_Height: 16.704847
   m_Direction: 1
   m_Center: {x: 0.15704882, y: 8.449208, z: 0.32980192}
+--- !u!114 &3726972211672007719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293538150499056078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb91f59d0d4a4dc5a0941b69b888668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAttackMode: 0
+  currentMoveMode: 1
+  walkSpeed: 5
+  damageAmount: 0
+  alive: 1
+  isAttacking: 0
 --- !u!1 &5456989096157870559
 GameObject:
   m_ObjectHideFlags: 0
